@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Destaque rápido quando um preço muda na atualização ao vivo */
+@keyframes flash-alta {
+  from { background-color: rgb(16 185 129 / 0.25); }
+  to { background-color: transparent; }
+}
+@keyframes flash-baixa {
+  from { background-color: rgb(239 68 68 / 0.25); }
+  to { background-color: transparent; }
+}
+.flash-alta { animation: flash-alta 1.6s ease-out; }
+.flash-baixa { animation: flash-baixa 1.6s ease-out; }

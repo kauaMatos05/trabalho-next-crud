@@ -1,0 +1,18 @@
+# dependências (cada um baixa com npm install)
+node_modules/
+
+# arquivos gerados pelo Next.js
+.next/
+out/
+next-env.d.ts
+
+# variáveis de ambiente (senhas e chaves)
+.env*
+
+# prints da entrega (mostram dados de teste)
+prints/
+
+# logs e sistema
+npm-debug.log*
+.DS_Store
+*.tsbuildinfo

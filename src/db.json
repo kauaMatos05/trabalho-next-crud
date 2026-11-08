@@ -1,0 +1,76 @@
+{
+  "usuarios": [
+    {
+      "nome": "Kaua Silva",
+      "email": "kaua.silva@email.com",
+      "cpf": "111.444.777-35",
+      "telefone": "(11) 91234-5678",
+      "dataNascimento": "2005-01-20",
+      "senha": "Teste2026x",
+      "endereco": {
+        "cep": "87501-000",
+        "logradouro": "Rua Exemplo",
+        "numero": "09",
+        "complemento": "",
+        "bairro": "umuarama",
+        "cidade": "umuarama",
+        "uf": "PR"
+      },
+      "id": 1
+    },
+    {
+      "nome": "Ana Beatriz Souza",
+      "email": "ana.souza@email.com",
+      "cpf": "123.456.789-09",
+      "telefone": "(11) 98765-4321",
+      "dataNascimento": "1998-04-15",
+      "senha": "Senha123",
+      "endereco": {
+        "cep": "01310-100",
+        "logradouro": "Avenida Paulista",
+        "numero": "1000",
+        "complemento": "Apto 52",
+        "bairro": "Bela Vista",
+        "cidade": "São Paulo",
+        "uf": "SP"
+      },
+      "id": 2
+    },
+    {
+      "nome": "Carlos Eduardo Lima",
+      "email": "carlos.lima@email.com",
+      "cpf": "987.654.321-00",
+      "telefone": "(21) 99876-5432",
+      "dataNascimento": "1990-11-02",
+      "senha": "Carlos2024",
+      "endereco": {
+        "cep": "22070-011",
+        "logradouro": "Avenida Atlântica",
+        "numero": "500",
+        "complemento": "",
+        "bairro": "Copacabana",
+        "cidade": "Rio de Janeiro",
+        "uf": "RJ"
+      },
+      "id": 3
+    },
+    {
+      "nome": "Mariana Oliveira Santos",
+      "email": "mariana.santos@email.com",
+      "cpf": "529.982.247-25",
+      "telefone": "(44) 98888-1234",
+      "dataNascimento": "2001-07-23",
+      "senha": "Mari2001x",
+      "endereco": {
+        "cep": "87501-000",
+        "logradouro": "Avenida Paraná",
+        "numero": "3456",
+        "complemento": "Sala 2",
+        "bairro": "Zona I",
+        "cidade": "Umuarama",
+        "uf": "PR"
+      },
+      "id": 4
+    }
+  ]
+}
