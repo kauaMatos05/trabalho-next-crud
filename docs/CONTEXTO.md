@@ -1,5 +1,16 @@
 # Contexto do projeto
 
+## 2026-11-08 — Desafio: autenticação com token e rotas protegidas
+- Decisão: json-server-auth (complemento do JSON Server, `-m`) gera JWT de 1h no `POST /login`. Contas de acesso ficam em `users` (senha com bcrypt); os cadastros do CRUD continuam em `usuarios`. Token guardado em cookie `token` (não localStorage, porque o proxy roda no servidor e só enxerga cookies). `src/proxy.ts` (nome novo do middleware no Next 16) barra `/dashboard`, `/mercado` e `/usuarios` sem token válido e redireciona para `/?acesso=negado`.
+- Arquivos tocados: `src/auth/` (sessao, api, token), `src/proxy.ts`, `src/routes.json` (660 em usuarios, 600 em users), `src/app/page.tsx` (login real + aviso), `src/usuarios/api.ts` (Authorization: Bearer), `src/painel/Sidebar.tsx` (Sair apaga o token), `package.json` (script `api`), `src/db.json` (lista `users`).
+- Padrão seguido: "token válido" = assinatura HMAC-SHA256 conferida com a chave do json-server-auth + campo `exp` no futuro (`src/auth/token.ts`, sem pacote extra). Proteção dupla: o proxy barra as páginas e a API devolve 401 sem token.
+- Pendências: chave secreta fixa no código (é a do json-server-auth; num sistema real iria para variável de ambiente). Cookie gravado pelo navegador, então não é HttpOnly.
+- Armadilhas:
+  - Conta de teste: `admin@cryptoview.com` / `Admin2026` (no `db.json` só fica o hash).
+  - O "Sair" usa `window.location.href` de propósito; com `router.push` o botão Voltar mostraria página protegida guardada no cache.
+  - O usuário faz os próprios commits; Claude não roda `git commit`/`git push`.
+- Repositório: https://github.com/kauaMatos05/trabalho-next-crud
+
 ## 2026-10-26 — CRUD de usuários (concluído)
 - Decisão: JSON Server 0.17.4 na porta 3001 (`npm run api`), dados em `src/db.json`. Formulário único reaproveitado no cadastro (POST) e na edição (PUT). A tela usa campos "achatados" (`CamposFormulario`) e a API usa endereço aninhado e data `aaaa-mm-dd`; `paraUsuario` e `paraFormulario` traduzem entre os dois.
 - Arquivos tocados:

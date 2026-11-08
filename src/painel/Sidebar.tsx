@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { apagarToken } from "@/src/auth/sessao";
 import Logo from "./Logo";
 
 const links = [
@@ -58,6 +59,16 @@ function Icone({ caminho, preenchido }: { caminho: string; preenchido: boolean }
 }
 
 function Usuario() {
+  function sair() {
+    apagarToken();
+    // Recarrega a página inteira (e não só troca de tela) para o navegador
+    // esquecer as páginas internas que já tinha guardado na memória.
+    // Com router.push, o botão "Voltar" poderia mostrar uma página protegida
+    // guardada no cache sem passar pelo proxy.ts.
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+    window.location.href = "/";
+  }
+
   return (
     <div className="md:border-t md:border-slate-800 md:pt-4 flex md:flex-col gap-3">
       <div className="hidden md:flex items-center gap-3 px-1">
@@ -69,9 +80,9 @@ function Usuario() {
           <p className="text-xs text-slate-500">Mesa de operações</p>
         </div>
       </div>
-      <Link href="/" className="px-3 py-2 rounded-md text-sm hover:bg-slate-800 hover:text-white transition">
+      <button onClick={sair} className="px-3 py-2 rounded-md text-sm text-left hover:bg-slate-800 hover:text-white transition">
         Sair
-      </Link>
+      </button>
     </div>
   );
 }
