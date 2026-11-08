@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "email": "admin@cryptoview.com",
+      "password": "$2a$10$UafP/4hpgdetT0fFN.xjTeFnCYTz5o5aTnN11ja1qcwbFB0zPNbK2",
+      "id": 1
+    }
+  ],
   "usuarios": [
     {
       "nome": "Kaua Silva",
