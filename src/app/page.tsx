@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { use, useState } from "react";
 import { useRouter } from "next/navigation";
 import Logo from "@/src/painel/Logo";
 import { fazerLogin } from "@/src/auth/api";
@@ -14,7 +14,9 @@ const destaques = [
 const classeCampo =
   "border border-slate-300 rounded-md px-3 py-2.5 text-slate-900 font-normal placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600";
 
-export default function Login() {
+export default function Login({ searchParams }: PageProps<"/">) {
+  // O proxy.ts manda para "/?acesso=negado" quem tentou entrar sem login
+  const acessoNegado = use(searchParams).acesso === "negado";
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -60,6 +62,11 @@ export default function Login() {
             <input type="password" placeholder="••••••••" required value={senha} onChange={(e) => setSenha(e.target.value)} className={classeCampo} />
           </label>
 
+          {acessoNegado && !erro && (
+            <p className="text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-md px-3 py-2">
+              Acesso restrito. Faça login para continuar.
+            </p>
+          )}
           {erro && <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md px-3 py-2">{erro}</p>}
 
           <button disabled={entrando} className="bg-blue-700 text-white font-semibold rounded-md py-2.5 hover:bg-blue-800 transition disabled:opacity-60">
